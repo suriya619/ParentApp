@@ -1,4 +1,4 @@
-import * as MailComposer from "expo-mail-composer";
+// import * as MailComposer from "expo-mail-composer";
 import React, { useState } from "react";
 import { ScrollView, Text, View, StyleSheet, TextInput } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -64,7 +64,7 @@ const MarkAbsent = ({ route }: any) => {
     mailOptions.recipients = ["david7funnell@gmail.com"];
     mailOptions.isHtml = true;
 
-    let result = await MailComposer.composeAsync(mailOptions);
+    // let result = await MailComposer.composeAsync(mailOptions);
     while (result.status !== "sent") {
       if (
         result.status === "cancelled" ||

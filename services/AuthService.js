@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import * as Facebook from "expo-facebook";
+// import * as Facebook from "expo-facebook";
 import ApiService from "./ApiService";
 import config from "../config";
 // import notificationService from './NotificationService';
@@ -513,34 +513,34 @@ class AuthService extends ApiService {
 
   loginWithFacebook = async (pageType, callback) => {
     console.log(pageType, callback, "== pageType, callback");
-    try {
-      await Facebook.initializeAsync({
-        appId: FACEBOOK_APP_ID,
-      });
-      const { type, token, expirationDate, permissions, declinedPermissions } =
-        await Facebook.logInWithReadPermissionsAsync({
-          permissions: ["public_profile", "email"],
-        });
-      if (type === "success") {
-        // Get the user's name using Facebook's Graph API
-        const responseUser = await fetch(
-          `https://graph.facebook.com/me?access_token=${token}`
-        );
-        const data = await responseUser.json();
-        const response = await fetch(
-          `https://graph.facebook.com/${data.id}?fields=id,name,email,picture&access_token=${token}`
-        );
-        const dataUser = await response.json();
+    // try {
+    //   await Facebook.initializeAsync({
+    //     appId: FACEBOOK_APP_ID,
+    //   });
+    //   const { type, token, expirationDate, permissions, declinedPermissions } =
+    //     await Facebook.logInWithReadPermissionsAsync({
+    //       permissions: ["public_profile", "email"],
+    //     });
+    //   if (type === "success") {
+    //     // Get the user's name using Facebook's Graph API
+    //     const responseUser = await fetch(
+    //       `https://graph.facebook.com/me?access_token=${token}`
+    //     );
+    //     const data = await responseUser.json();
+    //     const response = await fetch(
+    //       `https://graph.facebook.com/${data.id}?fields=id,name,email,picture&access_token=${token}`
+    //     );
+    //     const dataUser = await response.json();
 
-        console.log("fbCallBack initial method 1 >>> " + callback);
-        this.facebookLogin(pageType, dataUser, callback);
-      } else {
-        // type === 'cancel'
-      }
-    } catch ({ message }) {
-      alert(`Facebook Login Error: ${message}`);
-      console.log(message);
-    }
+    //     console.log("fbCallBack initial method 1 >>> " + callback);
+    //     this.facebookLogin(pageType, dataUser, callback);
+    //   } else {
+    //     // type === 'cancel'
+    //   }
+    // } catch ({ message }) {
+    //   alert(`Facebook Login Error: ${message}`);
+    //   console.log(message);
+    // }
   };
 
   getAccessToken = async () => {

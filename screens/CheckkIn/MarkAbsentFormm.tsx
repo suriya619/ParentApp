@@ -1,4 +1,4 @@
-import * as MailComposer from "expo-mail-composer";
+// import * as MailComposer from "expo-mail-composer";
 import {
   Box,
   Button,
@@ -67,7 +67,7 @@ const MarkAbsentFormm = ({route}: any) => {
     mailOptions.recipients = ["david7funnell@gmail.com"];
     mailOptions.isHtml = true;
 
-    let result = await MailComposer.composeAsync(mailOptions);
+    // let result = await MailComposer.composeAsync(mailOptions);
     while (result.status !== "sent") {
       if (
         result.status === "cancelled" ||
